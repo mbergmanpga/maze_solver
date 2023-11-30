@@ -12,7 +12,7 @@ class Maze:
         num_cols,
         cell_size_x,
         cell_size_y,
-        win,
+        win = None,
     ):
         self._cells = []
         self._x1 = x1
@@ -38,12 +38,19 @@ class Maze:
     def _draw_cell(self, i, j):
         if self._win is None:
             return
+        fill_color = "black"
         x1 = self._x1 + i * self._cell_size_x
         y1 = self._y1 + j * self._cell_size_y
         x2 = x1 + self._cell_size_x
         y2 = y1 + self._cell_size_y
         self._cells[i][j].draw(x1, y1, x2, y2)
         self._animate()
+
+    # Adding the method to break down the walls of entrance and exit of the maze
+    # https://www.boot.dev/assignments/3b4f3b5e-e42d-4ff4-b7f2-82d5caaed644
+    # def _break_entrance_and_exit(self):
+
+
 
     def _animate(self):
         if self._win is None:
