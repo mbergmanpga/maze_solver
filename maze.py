@@ -24,6 +24,7 @@ class Maze:
         self._win = win
 
         self._create_cells()
+        self._break_entrance_and_exit()
 
     def _create_cells(self):
         for i in range(self._num_cols):
@@ -46,9 +47,6 @@ class Maze:
         self._cells[i][j].draw(x1, y1, x2, y2)
         self._animate()
 
-    # Adding the method to break down the walls of entrance and exit of the maze
-    # https://www.boot.dev/assignments/3b4f3b5e-e42d-4ff4-b7f2-82d5caaed644
-    # def _break_entrance_and_exit(self):
 
 
 
@@ -57,3 +55,11 @@ class Maze:
             return
         self._win.redraw()
         time.sleep(0.05)
+    
+    # Adding the method to break down the walls of entrance and exit of the maze
+    # https://www.boot.dev/assignments/3b4f3b5e-e42d-4ff4-b7f2-82d5caaed644
+    def _break_entrance_and_exit(self):
+        self._cells[0][0].has_top_wall = False
+        self._draw_cell(0, 0)
+        self._cells[self._num_cols - 1][self._num_rows - 1].has_bottom_wall = False
+        self._draw_cell(self._num_cols - 1, self._num_rows - 1)  
