@@ -27,7 +27,8 @@ class Maze:
             random.seed(seed)
         self._create_cells()
         self._break_entrance_and_exit()
-        self._break_walls_r(0,0)
+        self._break_walls_r(0, 0)
+        self._reset_cells_visited()
 
     def _create_cells(self) -> object:
         for i in range(self._num_cols):
@@ -63,7 +64,6 @@ class Maze:
         self._draw_cell(0, 0)
         self._cells[self._num_cols - 1][self._num_rows - 1].has_bottom_wall = False
         self._draw_cell(self._num_cols - 1, self._num_rows - 1)
-
 
     def _break_walls_r(self, i, j):
         self._cells[i][j].visited = True
@@ -102,15 +102,17 @@ class Maze:
                 self._cells[i][j].has_left_wall = False
                 self._cells[i - 1][j].has_right_wall = False
             # down
-            if next_index[0] == j + 1:
+            if next_index[1] == j + 1:
                 self._cells[i][j].has_bottom_wall = False
-                self._cells[i][j+1].has_top_wall = False
+                self._cells[i][j + 1].has_top_wall = False
             # up
-            if next_index[0] == j - 1:
+            if next_index[1] == j - 1:
                 self._cells[i][j].has_top_wall = False
                 self._cells[i][j - 1].has_bottom_wall = False
             # visit the next cell recursively
             self._break_walls_r(next_index[0], next_index[1])
 
-
-
+    def _reset_cells_visited(self) -> object:
+        for col in self._cells:
+            for cell in col:
+                cell.visited = False
