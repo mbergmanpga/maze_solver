@@ -55,7 +55,7 @@ class Maze:
         if self._win is None:
             return
         self._win.redraw()
-        time.sleep(0.05)
+        time.sleep(0.01)
 
     # Adding the method to break down the walls of entrance and exit of the maze
     # https://www.boot.dev/assignments/3b4f3b5e-e42d-4ff4-b7f2-82d5caaed644

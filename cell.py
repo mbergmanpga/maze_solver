@@ -55,9 +55,9 @@ class Cell:
         y_mid = (self._y1 + self._y2)/2
         to_x_mid = (to_cell._x2 + to_cell._x1)/2
         to_y_mid = (to_cell._y2 + to_cell._y1)/2
-        fill_color= "red"
+        fill_color = "green"
         if undo:
-            fill_color = "gray"
+            fill_color = "red"
 
         # moving left
         if self._x1 > to_cell._x1:
